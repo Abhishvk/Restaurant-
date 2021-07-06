@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    {%load static%}
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <style>
+        body{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            /*background-image:url('../static/img/background-login.jpg');*/
+            background-color: lightseagreen;
+        }
+        div{
+            
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            
+            background-color: white;
+            
+        }
+    div h1{
+        padding-top: 30px;
+        text-align: left;
+        padding-left: 45px;
+        font-size: 30px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .input1{
+        width: 400px;
+        height: 35px;
+        margin-bottom:30px;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 3px 0;
+    }
+    .input1:focus{
+        border-color:lightcoral;
+        box-shadow: 0 0 10px lightseagreen;
+       
+    }
+
+    /*---============Submit button css==================---*/
+    #submit1{
+        position: relative;
+        margin-top: 80px;
+
+        width: 350px;
+        height: 40px;
+        border-radius: 20px;
+        font-size:21px;
+        border-style: none;
+        background-color:rgb(230, 76, 127);
+        color:white
+    }
+    #submit1:hover{
+        background-color: purple;
+    }
+    
+    </style>
+</head>
+<body id="body-login" >
+    
+    
+    <form action="" method="POST">
+        {%csrf_token%}
+        <hr> {%if messages%} {%for i in messages%}
+        <h1 class="{{i.tags}}" align="center">{{i}}</h1>
+        {%endfor%} {%endif%}
+        <div align="center" >
+            <h1>Sing in to Thai Tanic</h1>
+         
+            <input type="text" name="uname" placeholder="UserName" class="input1">
+            
+            <input type="password" name="upass" placeholder="Password" class="input1">
+         
+            <input id="submit1" type="submit" value="Login">
+            <h3> Don't have an account? &nbsp;&nbsp;<a href="{%url 'restos:register' %}">Register</a></h3>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% extends 'm_page_r2.html' %}
+{%block data%}
+<head>
+    <title>Book Table</title>
+</head>
+<body>
+    <!-- ======= Book A Table Section ======= -->
+    <section id="book-a-table" class="book-a-table">
+        <div class="container">
+  
+          <div class="section-title">
+            <h2>Book a <span>Table</span></h2>
+            <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+          </div>
+           <!----=========MSG for Error===============-->
+           <div style="margin-top: 10px;font-size: 30px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" align="center">
+            {%if messages%}
+            {%for i in messages%}
+            {{i}}
+            {%endfor%}
+            {%endif%}
+           </div>
+          <!--===========End error msg==============-->
+          <form action="{% url 'resto:booktable' %}" method="POST">
+            {%csrf_token%}
+            <div class="row">
+              <div class="col-lg-4 col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3">
+                <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3">
+                <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3">
+                <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars" required>
+                <div class="validate"></div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+              <div class="validate"></div>
+            </div>
+           
+          
+          <div class="text-center"><input type="submit" value="Book Table" style="background-color: orange;color: white;margin-top:5px;width: 130px;height: 40px;border-radius: 15px;border-color: white;"></div>
+      
+          </form>
+        </div>
+      </section><!-- End Book A Table Section -->
+  
+</body>
+{%endblock%}

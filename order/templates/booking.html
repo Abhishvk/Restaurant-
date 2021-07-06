@@ -1,0 +1,105 @@
+{% extends 'm_page_r2.html' %}
+{%block data%}
+<head>
+    <title>Bookings</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            box-sizing: border-box;
+        }
+        .btable{
+           
+            margin: 30px 0;
+        }
+        
+        .thead{
+            font-weight: 700;
+            color: black;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            height: 40px;
+            
+        }
+        .thead:after{
+            content: ":";
+
+        }
+        .tdata{
+            padding-left: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: 400;
+            height: 40px;
+        }
+        #headofhead{
+            font-family: monospace;
+            font-weight: 900;
+            font-size: 35px;
+            text-decoration: underline;
+            color:sandybrown;
+        }
+        .cencle1{
+            padding-top: 20px;
+            text-align: right;
+            line-height: 40px;
+            
+        }
+        .cencle1 a{
+            color: red;
+        }
+        .cencle1 a:hover{
+            color: blue;
+        }
+        .pheading{
+            color: lightskyblue;
+            text-align: center;
+            margin-top: 40px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+    </style>
+</head>
+<h1 class="pheading">Your Bookings</h1>
+<h3>
+    <table class="btable"> 
+        {%for i in bt%}
+        <tr>
+            <th colspan="2" id="headofhead">Details</th>
+        </tr>
+        <tr>
+            <td class="thead">Name</td>
+            <td style="text-transform: capitalize;" class="tdata">{{i.name}}</td>
+        </tr>
+        <tr>
+            <td class="thead">Email</td>
+            <td class="tdata">{{i.email}}</td>
+        </tr>
+        <tr>
+            <td class="thead">Phone Number</td>
+            <td class="tdata">{{i.phone}}</td>
+        </tr>
+        <tr>
+            <td class="thead">Date</td>
+            <td class="tdata">{{i.bdate}}</td>
+        </tr>
+        <tr>
+            <td class="thead">Time</td>
+            <td class="tdata">{{i.btime}}</td>
+        </tr>
+        <tr>
+            <td class="thead" >Number of People</td>
+            <td class="tdata">{{i.npeople}}</td>
+        </tr>
+        <tr>
+            <td class="thead">Message</td>
+            <td class="tdata" style="width:400px;text-align: justify;">{{i.bmessage}}</td>
+        </tr>
+        <tr>
+           
+            <td colspan="2" class="cencle1"><a href={% url 'orders:delete' %}?id={{i.id}}>Cencle Booking</a></td>
+
+        </tr>
+        <hr style="height: 10px;color:lightsalmon;box-shadow: 0 0 5px black;">
+        {%endfor%}
+        
+    </table>
+</h3>
+<hr style="height: 4px;color:red;box-shadow: 0 0 5px black;">
+{%endblock%}

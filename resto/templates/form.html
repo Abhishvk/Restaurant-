@@ -1,0 +1,127 @@
+{% extends 'm_page_r2.html' %}
+{%block data%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Register</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            background-color: lightskyblue;
+        }
+        form{
+            margin: 30px auto !important;
+            padding-top: 20px;
+            width: fit-content;
+            background-color: white;
+            padding: 0 50px;
+        }
+        
+        table{
+            margin: 0 auto;
+        }
+        input{
+            height: 30px;
+            width: 60%;
+        }
+        textarea{
+            width: 60%;
+            height: 80px;
+        }
+        input:focus{
+            border-color: lightgreen;
+            box-shadow: 0 0 10px lightpink;
+        }
+        textarea:focus{
+            border-color: lightgreen;
+            box-shadow: 0 0 10px lightpink;
+        }
+        th{
+            text-align: right;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        #submit1{
+            width: fit-content;
+            margin-top: 40px;background-color: orange;
+            height: 35px;
+            border-radius: 10px;
+            font-size: 19px;
+            color:white;
+            border: none;
+            margin-bottom: 30px;
+            padding:0 40px;
+        }
+        #reset1{
+            margin-left: 20px;
+            width: fit-content;
+            margin-top: 40px;
+            background-color: orange;
+            height: 35px;
+            border-radius: 10px;
+            font-size: 19px;
+            color: white;
+            border:none;
+            margin-bottom: 30px;
+            padding:0 40px;
+        }
+        #submit1:hover{
+            background-color: peru;
+            color: black;
+        }
+        #reset1:hover{
+            background-color: peru;
+            color: black;
+        }
+        .helptext{
+            text-align: left;
+        }
+        .errormsg{
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color:yellow;
+            font-size: 30px;
+        }
+        h3 {
+            margin:20px 0;
+            font-size: 20px;
+            padding-bottom: 30px; 
+
+        }
+        h3 a{
+            text-decoration: underline;
+            color: blue;
+        }
+        h3 a:hover{
+            color: blue;
+        }
+    </style>
+</head>
+<body align="center">
+{%if messages%}
+{%for i in messages%}
+<h1 class="errormsg">{{i}}</h1>
+{%endfor%}
+{%endif%}
+<div class="container">
+<form action="" method="POST">
+    {%csrf_token%}
+    <h1 style="text-transform: uppercase;margin: 20px 0;margin-bottom: 40px;padding-top: 40px;">Register </h1>
+    <table>
+        {{form.as_table}}
+    </table>
+    <table>
+        <tr>
+            <input id="submit1" type="submit" value="Submit">
+            <input id="reset1" type="reset" value="Restet">
+        </tr>
+    </table>
+    <h3>If You have account ? &nbsp;&nbsp; <a href={%url 'restos:login' %}>Login</a></h3>
+</form>
+</div>
+
+</body>
+</html>
+{%endblock%}
